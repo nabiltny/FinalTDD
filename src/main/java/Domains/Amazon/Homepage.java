@@ -185,4 +185,6 @@ public class Homepage extends WebAPI {
         goToCart();
         changeQty();
     }
+
+    //do a sign out
 }
