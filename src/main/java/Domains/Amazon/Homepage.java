@@ -1,5 +1,7 @@
 package Domains.Amazon;
 import Common.WebAPI;
+import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
@@ -31,7 +33,22 @@ public class Homepage extends WebAPI {
     public WebElement customerPasswordCheckIF;
     @FindBy(how = How.XPATH, using = createAccSubmit)
     public WebElement createAccountSubmitButton;
-
+    @FindBy (how = How.XPATH, using = selectHoodie)
+    public WebElement selectNikeHoodie;
+    @FindBy (how = How.XPATH, using = sizeChoice)
+    public WebElement chooseSize;
+    @FindBy (how = How.XPATH, using = addToCartButton)
+    public WebElement addToCart;
+    @FindBy (how = How.XPATH, using = sizeDropDown)
+    public WebElement sizeDropper;
+    @FindBy(how = How.XPATH, using = selectSizeFromDropper)
+    public WebElement sizeDropperSelect;
+    @FindBy(how = How.XPATH, using = navToCart)
+    public WebElement cartIcon;
+    @FindBy(how = How.XPATH, using = qtyDropdown)
+    public WebElement qtyDropArrow;
+    @FindBy(how = How.XPATH, using = qtyDropdownSelection)
+    public WebElement qtyDropSelect;
     public void searchFieldAction() {
         searchBar.click();
     }
@@ -81,8 +98,57 @@ public class Homepage extends WebAPI {
     public void createAccountSubmitButton() {
         createAccountSubmitButton.click();
     }
+    //Sign in function for repeated use
+    public void signIn(){
+        clickSignIn();
+        emailFieldFill(username);
+        customerSignInPasswordFill(password);
+    }
+    public void selectNikeItem(){
+        selectNikeHoodie.click();
+    }
+    public void selectSizeFromDropper(){
+        sizeDropper.click();
+        sizeDropperSelect.click();
+    }
+    public void addItemToCart(){
+        addToCart.click();
+    }
 
+    public void normalSizeSelect(){
+        chooseSize.click();
+    }
+    //There are 2 different types of size selecors
+    //This will try both
+    public void sizeSelector(){
+        try{
+            normalSizeSelect();
+        }catch(NoSuchElementException ex){
+            try{
+                selectSizeFromDropper();
+            }catch(NoSuchElementException ex2){
 
+            }
+        }
+    }
+    // Adds item to cart for test cases.
+    public void testPrereqCartItem() throws InterruptedException {
+        searchFieldAction();
+        searchFor("Nikes");
+        selectNikeItem();
+        sizeSelector();
+        Thread.sleep(2000);
+        addItemToCart();
+    }
+    public void goToCart(){
+        cartIcon.click();
+    }
+    public void changeQty(){
+        qtyDropArrow.click();
+        qtyDropSelect.click();
+    }
+
+    //Simple Search
     public void TestCase1() throws InterruptedException {
         searchFieldAction();
         searchFor("Nikes");
@@ -102,5 +168,21 @@ public class Homepage extends WebAPI {
         clickSignIn();
         emailFieldFill(username);
         customerSignInPasswordFill(password);
+    }
+    //Add Nike Hoodie to Cart.
+    public void TestCase4() throws InterruptedException {
+        //signIn();
+        searchFieldAction();
+        searchFor("Nikes");
+        selectNikeItem();
+        sizeSelector();
+        Thread.sleep(2000);
+        addItemToCart();
+    }
+    //Changing cart item quantity
+    public void TestCase5() throws InterruptedException {
+        testPrereqCartItem();
+        goToCart();
+        changeQty();
     }
 }

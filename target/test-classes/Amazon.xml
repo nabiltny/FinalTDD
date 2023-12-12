@@ -4,7 +4,7 @@
 
 <suite name="Amazon Test" parallel="false">
 
-    <parameter name="useCloudEnv" value="TRUE"/>
+    <parameter name="useCloudEnv" value="false"/>
     <parameter name="cloudEnvName" value="browserstack"/>
     <!--<parameter name="cloudEnvName" value="saucelab"/>-->
     <parameter name="os" value="windows"/>
