@@ -215,6 +215,10 @@ public class WebAPI {
             driver.findElement(By.xpath(locator)).sendKeys(value);
         }
     }
+    public void typeOn(WebElement element, String value) {
+        element.sendKeys(value);
+    }
+
 
     public static void typeOnElementNEnter(String locator, String value) {
         try {

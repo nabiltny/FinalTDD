@@ -29,10 +29,25 @@ public class TestCases extends WebAPI{
         getInitElements();
         homepage.TestCase4();
     }
-    @Test
+    @Test (enabled = false)
     public void TestCase5() throws InterruptedException {
         getInitElements();
         homepage.TestCase5();
+    }
+    @Test (enabled = false)
+    public void TestCase6() {
+        getInitElements();
+        homepage.TestCase6();
+    }
+    @Test (enabled = false)
+    public void TestCase7() throws InterruptedException {
+        getInitElements();
+        homepage.TestCase7();
+    }
+    @Test
+    public void TestCase8(){
+        getInitElements();
+        homepage.TestCase8();
     }
 
 }
