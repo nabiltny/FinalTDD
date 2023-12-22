@@ -9,12 +9,12 @@ public class TestCases extends WebAPI{
     public static void getInitElements() {
         homepage = PageFactory.initElements(driver, Homepage.class);
     }
-    @Test (enabled = false)
+    @Test(enabled = false)
     public void TestCase1() throws InterruptedException {
         getInitElements();
         homepage.TestCase1();
     }
-    @Test (enabled = false)
+    @Test(enabled = false)
     public void TestCase2(){
         getInitElements();
         homepage.TestCase2();
@@ -44,10 +44,20 @@ public class TestCases extends WebAPI{
         getInitElements();
         homepage.TestCase7();
     }
-    @Test
+    @Test (enabled = false)
     public void TestCase8(){
         getInitElements();
         homepage.TestCase8();
+    }
+    @Test (enabled = false)
+    public void TestCase9(){
+        getInitElements();
+        homepage.TestCase9();
+    }
+    @Test
+    public void TestCase10(){
+        getInitElements();
+        homepage.TestCase10();
     }
 
 }

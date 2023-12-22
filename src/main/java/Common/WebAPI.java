@@ -148,6 +148,7 @@ public class WebAPI {
                 System.setProperty("webdriver.chrome.driver", "../Generic/BrowserDriver/mac/chromedriver");
             } else if (OS.equalsIgnoreCase("Windows")) {
                 System.setProperty("webdriver.chrome.driver", "Driver/Windows/Chrome/chromedriver-win64/chromedriver.exe");
+
             }
             driver = new ChromeDriver(options);
         } else if (browserName.equalsIgnoreCase("firefox")) {
@@ -528,6 +529,10 @@ public class WebAPI {
     }
 
     //iFrame Handle
+
+    public void iframeZero() {
+        driver.switchTo().frame(0);
+    }
     public void iframeHandle(WebElement element) {
         driver.switchTo().frame(element);
     }

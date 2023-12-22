@@ -91,12 +91,37 @@ public class Homepage extends WebAPI {
     public WebElement addressAddButton;
     @FindBy(how = How.XPATH, using = addressSave)
     public WebElement addressSaveButton;
+    @FindBy(how = How.XPATH, using = accHubPracticeXpath)
+    public WebElement accHubPractice;
+    @FindBy(how = How.XPATH, using = yourProfileXpath)
+    public WebElement yourProfile;
+    @FindBy(how = How.XPATH, using = defaultProfileXpath)
+    public WebElement defaultProfile;
+    @FindBy(how = How.XPATH, using = clickEditXpath)
+    public WebElement clickEdit;
+    @FindBy(how = How.XPATH, using = numberInputXpath)
+    public WebElement numberInput;
+
+
+    public void addNumberToProfile(){
+        mouseHover(accHubPractice);
+        accHubPractice.click();
+        yourProfile.click();
+
+        defaultProfile.click();
+        clickEdit.click();
+        inputValueInTextBoxByWebElement(numberInput, "9291328329");
+    }
     public void searchFieldAction() {
         searchBar.click();
     }
 
     public void searchFor(String s) {
         inputValueInTextBoxByWebElement(searchBar, s);
+    }
+
+    public void searchForBooks(){
+        inputValueInTextBoxByWebElement(searchBar, "Books");
     }
 
     public void clickSignIn() {
@@ -288,5 +313,12 @@ public class Homepage extends WebAPI {
         enterAccHub();
         hubAddressesButton.click();
         addAddress("1 Main St", "New York", "New York", "10001");
+    }
+    public void TestCase9(){
+        searchForBooks();
+    }
+    public void TestCase10(){
+        signIn();
+        addNumberToProfile();
     }
 }
