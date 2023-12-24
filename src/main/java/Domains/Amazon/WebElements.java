@@ -18,7 +18,7 @@ public class WebElements {
     public static final String sizeDropDown = "//span[@class=\"a-dropdown-prompt\"]";
     public static final String selectSizeFromDropper = "//li[@id=\"size_name_1\"]";
     public static final String navToCart = "//a[@id=\"nav-cart\"]";
-    public static final String qtyDropdown = "//span[@id=\"a-autoid-0-announce\"]";
+    public static final String qtyDropdown = "//span[@id=\"a-autoid-1-announce\"]";
     public static final String qtyDropdownSelection = "//ul/li[7]/a[@id=\"quantity_6\"]";
     public static final String accManager = "//span[@id=\"nav-link-accountList-nav-line-1\"]";
     public static final String signOut = "//a[@id=\"nav-item-signout\"]";
@@ -44,7 +44,7 @@ public class WebElements {
 
     public static final String accHubPracticeXpath = "//*[@id=\"nav-link-accountList-nav-line-1\"]";
     public static final String yourProfileXpath = "//*[@id=\"a-page\"]/div[1]/div/div[4]/div[1]/a/div/div/div/div[2]/h2";
-    public static final String defaultProfileXpath = "//p[@id=\"home-profile-active\"]";
+    public static final String defaultProfileXpath = "//*[@id=\"home-profile-0\"]";
     public static final String clickEditXpath = "//*[@id=\"mobile-number-edit-link\"]/img";
     public static final String numberInputXpath = "//*[@id=\"cvf-page-content\"]/div/div/div/form/div[1]/div/div[2]/div/div[2]/input";
 }

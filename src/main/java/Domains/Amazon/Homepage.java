@@ -174,6 +174,9 @@ public class Homepage extends WebAPI {
         customerSignInPasswordFill(password);
 
     }
+    public void addItemToCart(){
+        addToCart.click();
+    }
     public void selectNikeItem(){
         selectNikeHoodie.click();
     }
@@ -181,10 +184,6 @@ public class Homepage extends WebAPI {
         sizeDropper.click();
         sizeDropperSelect.click();
     }
-    public void addItemToCart(){
-        addToCart.click();
-    }
-
     public void normalSizeSelect(){
         chooseSize.click();
     }
@@ -230,7 +229,8 @@ public class Homepage extends WebAPI {
     public void accHubPassword(){
         hubPasswordButton.click();
     }
-    public void resetPassword(String s, String s2){
+    public void resetPassword(String s, String s2) throws InterruptedException {
+            Thread.sleep(15000);
         passwordChangeOldIF.click();
         typeOn(passwordChangeOldIF, s);
         passwordChangeNewIF.click();
@@ -311,7 +311,7 @@ public class Homepage extends WebAPI {
         accHubLoginSecurity();
         accHubPassword();
         //Sleep to allow for me to manually input the captcha
-        Thread.sleep(10000);
+        Thread.sleep(30000);
         resetPassword(password, password);
     }
     //Add address

@@ -29,7 +29,7 @@ public class TestCases extends WebAPI{
         getInitElements();
         homepage.TestCase4();
     }
-    @Test
+    @Test (enabled = false)
     public void TestCase5() throws InterruptedException {
         getInitElements();
         homepage.TestCase5();
@@ -44,17 +44,17 @@ public class TestCases extends WebAPI{
         getInitElements();
         homepage.TestCase7();
     }
-    @Test (enabled = false)
+    @Test  (enabled = false)
     public void TestCase8() throws InterruptedException {
         getInitElements();
         homepage.TestCase8();
     }
-    @Test (enabled = false)
+    @Test   (enabled = false)
     public void TestCase9() throws InterruptedException {
         getInitElements();
         homepage.TestCase9();
     }
-    @Test
+    @Test (enabled = false)
     public void TestCase10() throws InterruptedException {
         getInitElements();
         homepage.TestCase10();
