@@ -554,12 +554,12 @@ public class WebAPI {
 
     //Synchronization
     public void waitUntilClickAble(By locator) {
-        WebDriverWait wait = new WebDriverWait(driver, 10);
+        WebDriverWait wait = new WebDriverWait(driver, 20);
         WebElement element = wait.until(ExpectedConditions.elementToBeClickable(locator));
     }
 
     public void waitUntilVisible(By locator) {
-        WebDriverWait wait = new WebDriverWait(driver, 10);
+        WebDriverWait wait = new WebDriverWait(driver, 20);
         WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
     }
 
@@ -588,8 +588,18 @@ public class WebAPI {
         String oldTab = driver1.getWindowHandle();
         List<String> newTabs = new ArrayList<String>(driver1.getWindowHandles());
         newTabs.remove(oldTab);
-        driver1.switchTo().window(newTabs.get(0));
+        driver1.switchTo().window(newTabs.get(1));
         return driver1;
+    }
+    public static void switchToNextTab(WebDriver driver) {
+        String currentTab = driver.getWindowHandle();
+
+        for (String tabHandle : driver.getWindowHandles()) {
+            if (!tabHandle.equals(currentTab)) {
+                driver.switchTo().window(tabHandle);
+                break;
+            }
+        }
     }
 
     public static boolean isPopUpWindowDisplayed(WebDriver driver1, String locator) {
@@ -692,10 +702,25 @@ public class WebAPI {
         JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("window.scrollTo(0, document.body.scrollHeight)");
     }
+    public static void scrollDownByHalf() {
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("window.scrollTo(0, document.body.scrollHeight / 2)");
+    }
+
 
     public static void dragAndDrop(WebElement To, WebElement from) {
         Actions actions = new Actions(driver);
         actions.dragAndDrop(To, from).build().perform();
+    }
+    public static void sliderDrag(WebElement element, int to, int from){
+        Actions actions = new Actions(driver);
+        actions.dragAndDropBy(element, to, from).build().perform();
+    }
+    public static void scrollSidebar(String xpath){
+        Actions actions = new Actions(driver);
+        WebElement scrollbar = driver.findElement(By.xpath(xpath));
+        actions.clickAndHold(scrollbar).moveByOffset(0, 300).release().perform();
+
     }
 
 }

@@ -12,7 +12,6 @@ public class WebElements {
     public static final String customerPasswordInput = "//input[@id='ap_password']";
     public static final String customerPasswordCheckInput = "//input[@id='ap_password_check']";
     public static final String createAccountSubmit = "//input[@id='continue']";
-    //search result for a search
     public static final String selectHoodie = "//span[contains(text(), 'Pullover Club Hoodie')]";
     public static final String sizeChoice = "//input[@aria-labelledby=\"size_name_1-announce\"]";
     public static final String addToCartButton = "//input[@id='add-to-cart-button']";

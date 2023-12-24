@@ -5,9 +5,9 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 
 import java.util.List;
+import java.util.Set;
 
 import static Domains.BCBS.WebElements.*;
-
 
 public class Homepage extends WebAPI {
     @FindBy(how = How.XPATH, using = accessBenefitsXpath)
@@ -46,6 +46,82 @@ public class Homepage extends WebAPI {
     public WebElement searchResult;
     @FindBy(how = How.XPATH, using = typeOfPlaceXpath)
     public WebElement typeOfPlace;
+    @FindBy(how = How.XPATH, using = advancedSearchXpath)
+    public WebElement advancedSearch;
+    @FindBy(how = How.XPATH, using = searchAreaXpath)
+    public WebElement searchArea;
+    @FindBy(how = How.XPATH, using = milesSliderXpath)
+    public WebElement milesSlider;
+    @FindBy(how = How.XPATH, using = getSearchResultXpath)
+    public WebElement getSearchResult;
+    @FindBy(how = How.XPATH, using = languagesXpath)
+    public WebElement languages;
+    @FindBy(how = How.XPATH, using = languageSearchXpath)
+    public WebElement languageSearch;
+    @FindBy(how = How.XPATH, using = englishXpath)
+    public WebElement english;
+    @FindBy(how = How.XPATH, using = findCareXpath)
+    public WebElement findCare;
+    @FindBy(how = How.XPATH, using = basicSearchXpath)
+    public WebElement basicSearch;
+    @FindBy(how = How.XPATH, using = arrowXpath)
+    public WebElement arrow;
+    @FindBy(how = How.XPATH, using = networkSelectXpath)
+    public WebElement networkSelect;
+    @FindBy(how = How.XPATH, using = contactUsXpath)
+    public WebElement contactUs;
+    @FindBy(how = How.XPATH, using = findUsXpath)
+    public WebElement findUs;
+    @FindBy(how = How.XPATH, using = findUsSearchXpath)
+    public WebElement findUsSearch;
+
+    public void setFindUsSearch() throws InterruptedException {
+        contactUs.click();
+        Thread.sleep(3000);
+        scrollDownByHalf();
+        findUs.click();
+        inputValueInTextBoxByWebElement(findUsSearch, "B2B");
+    }
+
+    public void basicSearchAsGuest() throws InterruptedException {
+        searchInArea();
+        Thread.sleep(2000);
+        switchToNextTab(driver);
+        Thread.sleep( 2000);
+        findCare.click();
+
+    }
+    public void changeGenger() throws InterruptedException {
+        advancedSearch.click();
+        WebElement scr1 = driver.findElement(By.xpath("/html[1]/body[1]/div[2]/div[8]/div[1]/div[1]/div[1]/div[1]/div[2]"));
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("arguments[0].scrollTop = arguments[0].scrollHeight", scr1);
+        Thread.sleep(20000);
+    }
+
+    public List noSingleIdentifierPicker(String xpath) {
+        List<WebElement> list = getListOfWebElementsByXpath(xpath);
+        return list;
+    }
+
+    public void advancedLanguageSearch() throws InterruptedException {
+        advancedSearch.click();
+        languages.click();
+        List<WebElement> list = noSingleIdentifierPicker(languageSearchXpath);
+        languageSearch = list.get(0);
+        languageSearch.click();
+        languageSearch.sendKeys("English");
+        Thread.sleep(2000);
+        english.click();
+        getSearchResult.click();
+    }
+
+    public void advancedSearchArea() throws InterruptedException {
+        advancedSearch.click();
+        searchArea.click();
+        sliderDrag(milesSlider, 25, 100);
+        getSearchResult.click();
+    }
 
     public void searchForPlan(){
         accessBenefits.click();
@@ -118,6 +194,28 @@ public class Homepage extends WebAPI {
     //Search for a clinic
     public void TestCase5() throws InterruptedException {
         typeOfPlaceSearch();
+    }
+    //Increasing Search Radius
+    public void TestCase6() throws InterruptedException {
+        doctorSearchDashboard();
+        advancedSearchArea();
+    }
+    //Language search
+    public void TestCase7() throws InterruptedException {
+        doctorSearchDashboard();
+        advancedLanguageSearch();
+    }
+    public void TestCase8() throws InterruptedException {
+        doctorSearchDashboard();
+        changeGenger();
+    }
+    public void TestCase9() throws InterruptedException {
+        searchInArea();
+        Thread.sleep(5000);
+        basicSearchAsGuest();
+    }
+    public void TestCase10() throws InterruptedException {
+        setFindUsSearch();
     }
 
 }

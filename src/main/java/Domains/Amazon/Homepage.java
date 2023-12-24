@@ -102,7 +102,6 @@ public class Homepage extends WebAPI {
     @FindBy(how = How.XPATH, using = numberInputXpath)
     public WebElement numberInput;
 
-
     public void addNumberToProfile(){
         mouseHover(accHubPractice);
         accHubPractice.click();
@@ -120,7 +119,8 @@ public class Homepage extends WebAPI {
         inputValueInTextBoxByWebElement(searchBar, s);
     }
 
-    public void searchForBooks(){
+    public void searchForBooks() throws InterruptedException {
+        Thread.sleep(10000);
         inputValueInTextBoxByWebElement(searchBar, "Books");
     }
 
@@ -256,13 +256,15 @@ public class Homepage extends WebAPI {
 
     //Simple Search
     public void TestCase1() throws InterruptedException {
+        Thread.sleep(10000);
         searchFieldAction();
         searchFor("Nikes");
     }
 
     //This test cases finds and fills out the create account form. This is the farthest I can go
     //Without running into bot authentication questions from the domain.
-    public void TestCase2() {
+    public void TestCase2() throws InterruptedException {
+        Thread.sleep(10000);
         clickSignIn();
         clickCreateAccount();
         customerNameFill("Nabil Testing");
@@ -270,13 +272,15 @@ public class Homepage extends WebAPI {
         customerSignUpPasswordFill("nblPnt23");
     }
     //Sign in
-    public void TestCase3(){
+    public void TestCase3() throws InterruptedException {
+        Thread.sleep(10000);
         clickSignIn();
         emailFieldFill(username);
         customerSignInPasswordFill(password);
     }
     //Add Nike Hoodie to Cart.
     public void TestCase4() throws InterruptedException {
+        Thread.sleep(10000);
         //signIn();
         searchFieldAction();
         searchFor("Nikes");
@@ -287,18 +291,21 @@ public class Homepage extends WebAPI {
     }
     //Changing cart item quantity
     public void TestCase5() throws InterruptedException {
+        Thread.sleep(10000);
         testPrereqCartItem();
         goToCart();
         changeQty();
     }
 
     //do a sign out
-    public void TestCase6(){
+    public void TestCase6() throws InterruptedException {
+        Thread.sleep(10000);
         signIn();
         signOut();
     }
     //Change Password
     public void TestCase7() throws InterruptedException {
+        Thread.sleep(10000);
         signIn();
         enterAccHub();
         accHubLoginSecurity();
@@ -308,16 +315,18 @@ public class Homepage extends WebAPI {
         resetPassword(password, password);
     }
     //Add address
-    public void TestCase8(){
+    public void TestCase8() throws InterruptedException {
+        Thread.sleep(10000);
         signIn();
         enterAccHub();
         hubAddressesButton.click();
         addAddress("1 Main St", "New York", "New York", "10001");
     }
-    public void TestCase9(){
+    public void TestCase9() throws InterruptedException {
         searchForBooks();
     }
-    public void TestCase10(){
+    public void TestCase10() throws InterruptedException {
+        Thread.sleep(10000);
         signIn();
         addNumberToProfile();
     }
